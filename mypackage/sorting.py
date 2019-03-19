@@ -57,7 +57,7 @@ def merge(A, B):
 
   # sorting
 
-  def quick_sort(items):
+def quick_sort(items):
 
     '''Return array of items, sorted in ascending order'''
 
