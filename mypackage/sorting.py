@@ -2,19 +2,15 @@
 
 def bubble_sort(items):
 
-    '''Return array of items, sorted in ascending order'''
-    change = True
-    passitem = len(items)-1
-    while passitem > 0 and change:
-        change = False
-        for i in range(passitem):
-            if items[i]>items[i+1]:
-                change = True
-                temp = items[i]
-                items[i] = items[i+1]
-                items[i+1] = temp
-        passitem = passitem-1
-    return passitem
+   '''Return array of items, sorted in ascending order'''
+
+   bubbled_items = items.copy() # Making sure that the new list is of the same length as items
+   for i in range(len(bubbled_items)):
+       for j in range(len(bubbled_items)-1-i):
+           if bubbled_items[j] > bubbled_items[j+1]:
+               bubbled_items[j], bubbled_items[j+1] = bubbled_items[j+1], bubbled_items[j]
+
+   return bubbled_items
 
 
 
