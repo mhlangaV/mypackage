@@ -10,24 +10,40 @@ def sum_array(array):
 
 def fibonacci(n):
 
-    '''Return nth term in fibonacci sequence'''
+   """
+   Calculate nth term in fibonacci sequence
 
-    x,y = 1,1
-    for i in range(n-1):
-        x,y = y,x+y
+   Args:
+       n (int): nth term in fibonacci sequence to calculate
 
-    return x
+   Returns:
+       int: nth term of fibonacci sequence,
+            equal to sum of previous two terms
+   """
+
+   if n <= 1:
+       return n
+   if n == 2:
+       return 1
+   else:
+       return fibonacci(n - 1) + fibonacci(n - 2)
 
 
 def factorial(n):
-    '''Return n!'''
-    if n == 1:
-        return n
-    else:
-        lower_fact = factorial(n-1)
-        current_fact = n * lower_fact
-        return  current_fact
 
+   '''Returns the product of all positive integers less than or equal to n.'''
+
+   if n < 0:
+       raise ValueError(" n must be a positive integer")
+
+   elif n == 0:
+       return 1
+
+   elif n == 1:
+       return n
+
+   else:
+       return  n * factorial(n-1)
 
 def reverse(word):
 
