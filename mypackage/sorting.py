@@ -22,38 +22,37 @@ def bubble_sort(items):
 # the merge function
 
 def merge_sort(items):
-
     '''Return array of items, sorted in ascending order'''
-
-
-    if len(items) <= 1:
+    len_i = len(items)
+    # Base case. A list of size 1 is sorted.
+    # Cae returns, so if reached then function will terminate after line 8
+    if len_i == 1:
         return items
-# Find the middle point and devide it
-    middle = len(items) // 2
-    left_list = items[:middle]
-    right_list = items[middle:]
+    # Recursive case. Find midpoint of list
+    mid_point = int(len_i / 2)
+    # divide list into two halves
+    i1 = merge_sort(items[:mid_point])
+    i2 = merge_sort(items[mid_point:])
+    # call merge_sort function on each half of list
+    return merge(i1, i2)
 
-    left_list = merge_sort(left_list)
-    right_list = merge_sort(right_list)
-    return list(merge(left_list, right_list))
-
-# Merge the sorted halves
-
-def merge(left_half,right_half):
-
-    res = []
-    while len(left_half) != 0 and len(right_half) != 0:
-        if left_half[0] < right_half[0]:
-            res.append(left_half[0])
-            left_half.remove(left_half[0])
+# Merge function.
+def merge(A, B):
+    new_list = []
+    while len(A) > 0 and len(B) > 0:
+        if A[0] < B[0]:
+            new_list.append(A[0])
+            A.pop(0)
         else:
-            res.append(right_half[0])
-            right_half.remove(right_half[0])
-    if len(left_half) == 0:
-        res = res + right_half
-    else:
-        res = res + left_half
-    return res
+            new_list.append(B[0])
+            B.pop(0)
+
+    if len(A) == 0:
+        new_list = new_list + B
+    if len(B) == 0:
+        new_list = new_list + A
+
+    return new_list
 
 
   # sorting
